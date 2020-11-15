@@ -5,6 +5,7 @@
 #--3、组件如何交互？组件中的事件
 #Tkinter8.5参考手册手册http://infohost.nmt.edu/tcc/help/pubs/tkinter/web/index.html
 #Tkinter 8.5 reference: a GUI for Python https://anzeljg.github.io/rin2/book2/2405/docs/tkinter/index.html
+#Python 3.9.0 标准库参考https://www.bookstack.cn/read/python3.9-library-zh/a61d1812159c97a1.md
 import tkinter as tk
 
 def onclick():
