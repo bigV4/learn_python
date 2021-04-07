@@ -44,9 +44,9 @@ class MY_GUI():
         self.str_trans_to_md5_button = Button(self.init_window_name, text="<---BASE64转字符串", bg="lightblue", width=20,command=self.str_trans_to_md5)  # 调用内部方法  加()为直接调用
         self.str_trans_to_md5_button.grid(row=3, column=67, rowspan=1)
         self.str_trans_to_upper_button = Button(self.init_window_name, text="字符串转大写--->", bg="lightblue", width=20,command=self.str_trans_to_base64)  # 调用内部方法  加()为直接调用
-        self.str_trans_to_upper_button.grid(row=2, column=67, rowspan=1)
+        self.str_trans_to_upper_button.grid(row=4, column=67, rowspan=1)
         self.str_trans_to_lower_button = Button(self.init_window_name, text="字符串转小写--->", bg="lightblue", width=20,command=self.str_trans_to_base64)  # 调用内部方法  加()为直接调用
-        self.str_trans_to_lower_button.grid(row=2, column=67, rowspan=1)
+        self.str_trans_to_lower_button.grid(row=5, column=67, rowspan=1)
 
 
     #功能函数
