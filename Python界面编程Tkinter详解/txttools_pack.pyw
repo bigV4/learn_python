@@ -110,17 +110,17 @@ def str2md5(textlist):
 
 # 功能函数字符串算BASE64编码
 def str2base64(textlist):
-    src = textlist[0].get(1.0, END).strip().replace("\n", "").encode()
+    src = textlist[0].get(1.0, tk.END).strip().replace("\n", "").encode()
     # print("src =",src)
     if src:
         try:
             mybase64_digest = base64.b64encode(src)
             # print(my_md5_digest)
             # 输出到界面
-            textlist[1].delete(1.0, END)
+            textlist[1].delete(1.0, tk.END)
             textlist[1].insert(1.0, mybase64_digest)
         except Exception as e:
-            textlist[1].delete(1.0, END)
+            textlist[1].delete(1.0, tk.END)
             textlist[1].insert(1.0, "字符串转base64失败")
     else:
         textlist[1].insert("ERROR:str_trans_to_base64 failed")
