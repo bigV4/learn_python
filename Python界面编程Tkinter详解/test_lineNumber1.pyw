@@ -41,19 +41,19 @@ class CustomText(tk.Text):
         # generate an event if something was added or deleted,
         # or the cursor position changed
         if (args[0] in ("insert", "replace", "delete") or
-            args[0:3] == ("mark", "set", "insert") or
-            args[0:2] == ("xview", "moveto") or
-            args[0:2] == ("xview", "scroll") or
-            args[0:2] == ("yview", "moveto") or
-            args[0:2] == ("yview", "scroll")
-            ):
+                args[0:3] == ("mark", "set", "insert") or
+                args[0:2] == ("xview", "moveto") or
+                args[0:2] == ("xview", "scroll") or
+                args[0:2] == ("yview", "moveto") or
+                args[0:2] == ("yview", "scroll")
+                ):
             self.event_generate("<<Change>>", when="tail")
 
         # return what the actual widget returned
         return result
 
 
-class Example(tk.Frame):
+class Example(tk.Frame, method="pack"):
     def __init__(self, *args, **kwargs):
         tk.Frame.__init__(self, *args, **kwargs)
         self.text = CustomText(self)
@@ -62,10 +62,15 @@ class Example(tk.Frame):
         self.text.tag_configure("bigfont", font=("Helvetica", "24", "bold"))
         self.linenumbers = TextLineNumbers(self, width=30)
         self.linenumbers.attach(self.text)
+        # 后面使用的时候如果pack布局
+        #self.vsb.pack(side="right", fill="y")
+        #self.linenumbers.pack(side="left", fill="y")
+        #self.text.pack(side="right", fill="both", expand=True)
 
-        self.vsb.pack(side="right", fill="y")
-        self.linenumbers.pack(side="left", fill="y")
-        self.text.pack(side="right", fill="both", expand=True)
+        # 后面使用的时候如果grid布局
+        self.linenumbers.grid(row=0, column=0)
+        self.vsb.grid(row=0, column=1)
+        self.text.grid(row=0, column=2)
 
         self.text.bind("<<Change>>", self._on_change)
         self.text.bind("<Configure>", self._on_change)
@@ -80,5 +85,6 @@ class Example(tk.Frame):
 
 if __name__ == "__main__":
     root = tk.Tk()
-    Example(root).pack(side="top", fill="both", expand=True)
+    #Example(root).pack(side="top", fill="both", expand=True)
+    Example(root).grid(row=0, column=0)
     root.mainloop()
